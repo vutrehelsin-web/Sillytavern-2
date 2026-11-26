@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: sillytavern-voice
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: node server.ts
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 22.23.5
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: TTS_ENDPOINT_URL
+        value: https://ais-pre-u7l73h3ecm66d62zwylz6x-227764188141.us-east1.run.app/v1/audio/speech
+      - key: TTS_API_KEY
+        sync: false
+      - key: CUSTOM_CHAT_BASE_URL
+        sync: false
+      - key: CUSTOM_CHAT_MODEL
+        sync: false
+      - key: CUSTOM_CHAT_API_KEY
+        sync: false
